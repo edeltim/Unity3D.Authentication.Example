@@ -41,7 +41,7 @@ namespace Assets
         // /Assets/Plugins folder.
         private OidcClient CreateAuthClient()
         {
-            var options = new OidcClientOptions()
+            /*var options = new OidcClientOptions()
             {
                 Authority = "https://demo.identityserver.io/",
                 ClientId = "native.code",
@@ -49,6 +49,20 @@ namespace Assets
                 // Redirect (reply) uri is specified in the AndroidManifest and code for handling
                 // it is in the associated AndroidUnityPlugin project, and OAuthUnityAppController.mm.
                 RedirectUri = "io.identitymodel.native://callback",
+                PostLogoutRedirectUri = "io.identitymodel.native://callback",
+                ResponseMode = OidcClientOptions.AuthorizeResponseMode.Redirect,
+                Flow = OidcClientOptions.AuthenticationFlow.AuthorizationCode,
+                Browser = Browser,
+            };*/
+
+            var options = new OidcClientOptions()
+            {
+                Authority = "https://identity.pmt.cloud",
+                ClientId = "socialloto",
+                Scope = "openid profile email",
+                // Redirect (reply) uri is specified in the AndroidManifest and code for handling
+                // it is in the associated AndroidUnityPlugin project, and OAuthUnityAppController.mm.
+                RedirectUri = "peppermynt.socialloto://callback",
                 PostLogoutRedirectUri = "io.identitymodel.native://callback",
                 ResponseMode = OidcClientOptions.AuthorizeResponseMode.Redirect,
                 Flow = OidcClientOptions.AuthenticationFlow.AuthorizationCode,
