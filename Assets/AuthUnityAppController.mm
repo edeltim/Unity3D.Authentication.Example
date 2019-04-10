@@ -14,7 +14,7 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
     if (!url)
         return NO;
 
-    if ([url.scheme isEqualToString:@"io.identitymodel.native"]) {
+    if ([url.scheme isEqualToString:@"peppermynt.socialloto"]) {
         if ([url.host isEqualToString:@"callback"]) {
             if (url.query) {
                 const char * queryString = [url.query UTF8String];
