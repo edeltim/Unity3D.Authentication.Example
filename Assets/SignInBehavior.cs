@@ -13,6 +13,7 @@ namespace Assets
         public GameObject SignInButtonText;
         public GameObject SignInButton;
         public GameObject StatusText;
+        public GameObject Picture;
         private bool _replyReceived;
         private bool _authOperationInProgress;
         private bool _signinCancelled;
@@ -61,6 +62,8 @@ namespace Assets
             if (_signedIn)
             {
                 StatusText.GetComponent<Text>().text = "Hello " + _authClient.GetUserName();
+
+                Picture.GetComponent<Text>().text = _authClient.GetPicture();
             }
             else if (_signinCancelled)
             {

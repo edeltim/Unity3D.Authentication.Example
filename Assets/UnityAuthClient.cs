@@ -59,11 +59,11 @@ namespace Assets
             {
                 Authority = "https://identity.pmt.cloud",
                 ClientId = "socialloto",
-                Scope = "openid profile email",
+                Scope = "openid profile email picture",
                 // Redirect (reply) uri is specified in the AndroidManifest and code for handling
                 // it is in the associated AndroidUnityPlugin project, and OAuthUnityAppController.mm.
                 RedirectUri = "peppermynt.socialloto://callback",
-                PostLogoutRedirectUri = "io.identitymodel.native://callback",
+                PostLogoutRedirectUri = "peppermynt.socialloto://callback",
                 ResponseMode = OidcClientOptions.AuthorizeResponseMode.Redirect,
                 Flow = OidcClientOptions.AuthenticationFlow.AuthorizationCode,
                 Browser = Browser,
@@ -131,8 +131,29 @@ namespace Assets
             return false;
         }
 
+        public string GetPicture()
+        {
+            var tmp = _result.User.Claims;
+            foreach (var item in tmp)
+            {
+                if (item.Type == "picture")
+                {
+                    Debug.Log($"Type: {item.Type}, Value: {item.Value}");
+                }
+            }
+            return "";
+        }
+
         public string GetUserName()
         {
+            /*var tmp = _result.User.Claims;
+            foreach (var item in tmp)
+            {
+                if (item.Type == "picture")
+                {
+
+                }
+            }*/
             return _result == null ? "" : _result.User.Identity.Name;
         }
 
